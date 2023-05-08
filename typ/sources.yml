@@ -1,0 +1,6 @@
+tornado:
+  type: Article
+  title: Tornado Cash Privacy Solution v1.4
+  author: ["Alexey Pertsev", "Roman Semenov", "Roman Storm"]
+  date: 2019-12-17
+
