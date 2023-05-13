@@ -1,6 +1,31 @@
 tornado:
   type: Article
   title: Tornado Cash Privacy Solution v1.4
-  author: ["Alexey Pertsev", "Roman Semenov", "Roman Storm"]
+  author: [Alexey Pertsev, Roman Semenov, Roman Storm]
   date: 2019-12-17
+  url: https://berkeley-defi.github.io/assets/material/Tornado%20Cash%20Whitepaper.pdf
 
+primer:
+  type: Blog
+  title: "Zero Knowledge Proofs: An illustrated primer, Part 2"
+  author: Matthew Green
+  date: 2017-01-21
+  url: https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/
+
+zcash:
+  type: Blog
+  title: What are zk-SNARKs?
+  author: ZCash team
+  url: https://z.cash/technology/zksnarks/
+
+schnorr:
+  type: Article
+  title: Schnorr's identification protocol
+  author: Trail of Bits
+  url: https://www.zkdocs.com/docs/zkdocs/zero-knowledge-protocols/schnorr/
+
+fiat-shamir:
+  type: Article
+  title: Fiat-Shamir transformation
+  author: Trail of Bits
+  url: https://www.zkdocs.com/docs/zkdocs/protocol-primitives/fiat-shamir/
