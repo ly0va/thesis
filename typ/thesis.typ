@@ -1,6 +1,8 @@
 #let fontsize = 14pt
 #show heading: set text(size: fontsize)
+#show heading.where(level: 1): it => [#it \ ]
 #show heading.where(level: 1): set align(center)
+#show raw: set text(size: fontsize)
 #set text(size: fontsize, font: "Noto Serif")
 #set page(
   paper: "a4",
@@ -74,14 +76,16 @@
 #let leading = 1.5em
 #set par(leading: leading, first-line-indent: 1.27cm)
 #show par: set block(spacing: leading)
+#show outline: set par(first-line-indent: 0mm)
+#show terms: set par(first-line-indent: 0mm)
 
-#heading(outlined: false)[РЕФЕРАТ] \
+#heading(outlined: false)[РЕФЕРАТ]
 
 Обсяг роботи:
 #locate(loc => counter(page).final(loc).at(0)) сторінок,
 #locate(loc => counter(figure.where(kind: image)).final(loc).at(0)) ілюстрацій,
 #locate(loc => counter(figure.where(kind: table)).final(loc).at(0)) таблиць,
-#locate(loc => counter(cite).final(loc).at(0)) використаних джерел.
+#locate(loc => counter(ref).final(loc).at(0)) використаних джерел.
 
 Ключові слова: ДОКАЗИ З НУЛЬОВИМ РОЗГОЛОШЕННЯМ, АНОНІМНІ ПЕРЕКАЗИ,
 БЛОКЧЕЙН, КРИПТОГРАФІЯ, СМАРТ КОНТРАКТИ, ДЕРЕВО МЕРКЛА.
@@ -103,12 +107,10 @@
 
 #pagebreak()
 
-#outline(title: [ЗМІСТ \ \ ])
+#outline(title: [ЗМІСТ])
 #pagebreak()
 
 = ВСТУП
-
-\
 
 У сучасному цифровому світі анонімність та конфіденційність стають
 все більш важливими, особливо в контексті фінансових операцій.
@@ -136,26 +138,22 @@
 банківські установи, фінтех-компанії та інші організації, які займаються
 електронними платежами та фінансовими операціями.
 
-Дана робота базується на реалізації Tornado Cash #cite("tornado") – відомого
+Дана робота базується на реалізації Tornado Cash @tornado – відомого
 протоколу для анонімних транзакцій на блокчейні Ethereum. Основні принципи
-та ідеї Tornado Cash  адаптовані та розширені для даної роботи, зокрема для
+та ідеї Tornado Cash адаптовані та розширені для даної роботи, зокрема для
 використання мови програмування `Noir`.
 
 #pagebreak()
 
 = СКОРОЧЕННЯ ТА УМОВНІ ПОЗНАЧЕННЯ
 
-#[
-  #set par(first-line-indent: 0mm)
-  \
-  / ZKP: Zero-Knowledge Proof, доказ з нульовим розголошенням;
-  / ZKC: Zero-Knowledge Circuits, схеми з нульовим розголошенням;
-  / ZK-SNARK: Zero-Knowledge Succinct Non-Interactive ARgument of Knowledge;
-  / ZK-STARK: Zero-Knowledge Scalable Transparent ARgument of Knowledge;
-  / EVM: Ethereum Virtual Machine, середовище виконання смарт-контрактів
-    в блокчейні Ethereum;
-  / ERC20: широко використовуваний стандарт токенів в блокчейні Ethereum;
-]
+/ ZKP: Zero-Knowledge Proof, доказ з нульовим розголошенням;
+/ ZKC: Zero-Knowledge Circuits, схеми з нульовим розголошенням;
+/ ZK-SNARK: Zero-Knowledge Succinct Non-Interactive ARgument of Knowledge;
+/ ZK-STARK: Zero-Knowledge Scalable Transparent ARgument of Knowledge;
+/ EVM: Ethereum Virtual Machine, середовище виконання смарт-контрактів
+  в блокчейні Ethereum;
+/ ERC20: широко використовуваний стандарт токенів в блокчейні Ethereum;
 
 #pagebreak()
 
@@ -168,9 +166,30 @@
 })
 
 = ОГЛЯД ДОКАЗІВ З НУЛЬОВИМ РОЗГОЛОШЕННЯМ
+
+== Означення та властивості
+\
+
+Доказ нульового розголошення можна розглядати як взаємодiю мiж
+двома комп’ютерними програмами. Oдну з них називають Прувер, а другу
+Верифiкатор. Прувер переконує Верифiкатора, що певне математичне
+твердження є iстинним. Будь-який доказ нульового розголошення має
+задовольняти три властивостi:
+
++ *Повнота* (Completeness): якщо Прувер чесний (твердження істинне), то врештi-решт вiн переконає Верифiкатора.
++ *Обґрунтованiсть* (Soundness): Прувер може переконати Верифiкатора лише в тому випадку, якщо твердження iстинне.
++ *Нульовий рiвень знань* (Zero knowledge): Верифікатор не дiзнається жодної iнформацiї, окрім факту істинності твердження.
+
 #pagebreak()
 
 = ОГЛЯД ІСНУЮЧИХ ПРОТОКОЛІВ АНОНІМНИХ ПЕРЕКАЗІВ
+
+== Zcash
+== Aztec
+== Tornado Cash
+== Monero
+== Mimblewimble
+
 #pagebreak()
 
 = РЕАЛІЗАЦІЯ
