@@ -4,12 +4,21 @@
   "author": "Lyova Potyomkin <lyova.potyomkin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@typechain/ethers-v5": "^10.2.1",
+    "@typechain/hardhat": "^6.1.6",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^20.2.1",
+    "chai": "^4.3.7",
+    "ethers": "^5.7.0",
     "hardhat": "^2.14.0",
     "ts-node": "^10.9.1",
+    "typechain": "^8.1.1",
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^3.3.0"
+    "@openzeppelin/contracts": "^3.3.0",
+    "circomlibjs": "^0.1.7"
   }
 }

@@ -10,5 +10,7 @@ Verifier.toml
 # hardhat artifacts
 artifacts
 cache
+typechain-types
 node_modules
 yarn.lock
+yarn-error.log

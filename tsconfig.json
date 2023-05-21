@@ -12,6 +12,6 @@
     "./hardhat.config.ts",
     "./scripts",
     "./test",
-    "typechain/**/*"
+    "typechain-types/**/*"
   ]
 }
