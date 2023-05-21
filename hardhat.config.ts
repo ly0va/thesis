@@ -1,5 +1,6 @@
 import '@typechain/hardhat';
 import '@nomiclabs/hardhat-ethers';
+import '@nomicfoundation/hardhat-chai-matchers';
 import { HardhatUserConfig, task } from 'hardhat/config';
 
 import fs from 'fs';
@@ -20,7 +21,7 @@ task("mimc7", "Generates the MiMC7 hasher bytecode").setAction(async () => {
     return contract;
 });
 
-task("verifier", "Generates the verifier contract").setAction(async (_args, hre) => {
+task("verifier", "Generates the verifier contract").setAction(async () => {
     if (fs.existsSync('contracts/Verifier.sol')) {
         console.log('Verifier.sol already exists, skipping');
         return;
