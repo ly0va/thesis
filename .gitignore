@@ -6,6 +6,8 @@ target
 proofs
 Prover.toml
 Verifier.toml
+Verifier.sol
+plonk_vk.sol
 
 # hardhat artifacts
 artifacts
