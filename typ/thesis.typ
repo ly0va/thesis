@@ -1,8 +1,7 @@
 #let fontsize = 14pt
 #show heading: set text(size: fontsize)
-#show heading.where(level: 1): it => [#it \ ]
-#show heading.where(level: 1): set align(center)
-#set text(size: fontsize, font: "Noto Serif")
+#show heading.where(level: 1): it => align(center)[#upper(it) \ ]
+#set text(size: fontsize, font: "Noto Serif", lang: "ua")
 #show raw: set text(size: fontsize)
 #show math.equation: set text(size: 16pt)
 #set page(
@@ -13,11 +12,7 @@
     left: 25mm,
     right: 10mm
   ),
-  header: [
-    #align(right)[
-      #counter(page).display(i => if i != 1 [#i])
-    ]
-  ]
+  header: align(right)[#counter(page).display(i => if i != 1 [#i])]
 )
 
 #align(center)[
@@ -80,7 +75,7 @@
 #show outline: set par(first-line-indent: 0mm)
 #show terms: set par(first-line-indent: 0mm)
 
-#heading(outlined: false)[РЕФЕРАТ]
+#heading(outlined: false)[Реферат]
 
 Обсяг роботи:
 #locate(loc => counter(page).final(loc).at(0)) сторінок,
@@ -98,7 +93,7 @@
 для анонімних переказів з відкритим вихідним кодом для покращення
 фінансової приватності в публічних блокчейнах.
 
-Інструментом створення є безкоштовний, вільно поширюваний редактор коду
+Інструментами створення є безкоштовний, вільно поширюваний редактор коду
 `Neovim` та мова розмітки тексту `Typst`, мови програмування `Noir`,
 `TypeScript`, `Solidity`. Використано фреймворк `Hardhat` та
 бібліотеку `ethers.js`.
@@ -108,10 +103,10 @@
 
 #pagebreak()
 
-#outline(title: [ЗМІСТ])
+#outline()
 #pagebreak()
 
-= ВСТУП
+= Вступ
 
 У сучасному цифровому світі анонімність та конфіденційність стають
 все більш важливими, особливо в контексті фінансових операцій.
@@ -146,7 +141,7 @@
 
 #pagebreak()
 
-= СКОРОЧЕННЯ ТА УМОВНІ ПОЗНАЧЕННЯ
+= Скорочення та умовні позначення
 
 / ZKP: Zero-Knowledge Proof, доказ з нульовим розголошенням;
 / ZKC: Zero-Knowledge Circuits, схеми з нульовим розголошенням;
@@ -161,13 +156,13 @@
 
 #set heading(numbering: (..nums) => {
   if nums.pos().len() == 1 {
-    "РОЗДІЛ " + str(nums.pos().at(0)) + "."
+    "Розділ " + str(nums.pos().at(0)) + "."
   } else {
     numbering("1.", ..nums)
   }
 })
 
-= ОГЛЯД ДОКАЗІВ З НУЛЬОВИМ РОЗГОЛОШЕННЯМ
+= Огляд доказів з нульовим розголошенням
 == Означення та властивості
 \
 
@@ -238,24 +233,27 @@
 
 #[
   #set par(leading: 0.5em)
-  #figure(table(
-    columns: (auto, auto, auto, auto),
-    align: center + horizon,
-    inset: 10pt,
-    [], [*SNARK*], [*STARK*], [*Bulletproof*],
-    [Алгоритмічна складність: Прувер], [$O(n log(n))$], [$O(n "poly-log"(n))$], [$O(n log(n))$],
-    [Алгоритмічна складність: Верифікатор], [$O(1)$], [$O("poly-log"(n))$], [$O(n)$],
-    [Розмір доказу], [$O(1)$], [$O("poly-log"(n))$], [$O(log(n))$],
-    [Потрібен trusted setup], [так], [ні], [ні],
-    [Стійкість до квантових алгоритмів], [ні], [так], [ні],
-    [Криптографічні припущення], [DLP + secure bilinear pairing], [хеші, стійкі до колізій], [DLP],
-  ))
+  #figure(
+    outlined: false,
+    caption: "Порівняльна характеристика",
+    table(
+      columns: (auto, auto, auto, auto),
+      align: center + horizon,
+      inset: 10pt,
+      [], [*SNARK*], [*STARK*], [*Bulletproof*],
+      [Алгоритмічна складність: Прувер], [$O(n log(n))$], [$O(n "poly-log"(n))$], [$O(n log(n))$],
+      [Алгоритмічна складність: Верифікатор], [$O(1)$], [$O("poly-log"(n))$], [$O(n)$],
+      [Розмір доказу], [$O(1)$], [$O("poly-log"(n))$], [$O(log(n))$],
+      [Потрібен trusted setup], [так], [ні], [ні],
+      [Стійкість до квантових алгоритмів], [ні], [так], [ні],
+      [Криптографічні припущення], [DLP + secure bilinear pairing], [хеші, стійкі до колізій], [DLP],
+    )
+  )
 ]
 
 #pagebreak()
 
-= ОГЛЯД ІСНУЮЧИХ ПРОТОКОЛІВ АНОНІМНИХ ПЕРЕКАЗІВ
-
+= Огляд існуючих протоколів анонімних переказів
 == Zcash
 == Aztec
 == Tornado Cash
@@ -264,13 +262,16 @@
 
 #pagebreak()
 
-= РЕАЛІЗАЦІЯ
+= Реалізація
+== Схема протоколу
+== Інкрементальне дерево Меркла
+== Покращення
 #pagebreak()
 
 #set heading(numbering: none)
 
-= ВИСНОВКИ
+= Висновки
 #pagebreak()
 
-= ПЕРЕЛІК ДЖЕРЕЛ ПОСИЛАННЯ
+= Перелік джерел посилання
 #bibliography(title: none, "sources.yml")
