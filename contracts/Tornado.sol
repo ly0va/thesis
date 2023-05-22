@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 interface IVerifier {
   function verifyProof(bytes memory _proof, uint256[5] memory _input) external returns (bool);
+  // function verify(bytes calldata _proof) external returns (bool);
 }
 
 contract Tornado is MerkleTreeWithHistory, ReentrancyGuard {

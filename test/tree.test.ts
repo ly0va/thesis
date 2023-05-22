@@ -9,7 +9,7 @@ import { buildMimc7 } from "circomlibjs";
 
 const MAX_TREE_DEPTH = 31;
 
-describe("Hasher", function () {
+describe("Merkle Tree", function () {
     let hasherContract: { abi: ContractInterface; bytecode: string };
     let hasher: IHasher;
     let tree: MerkleTreeWithHistory;
@@ -40,6 +40,6 @@ describe("Hasher", function () {
     });
 
     it ("should test root value", async () => {
-        expect(await tree.roots(0)).to.equal(await tree.zeros(MAX_TREE_DEPTH - 1));
+        expect(await tree.roots(0)).to.equal(await tree.zeros(MAX_TREE_DEPTH));
     });
 });

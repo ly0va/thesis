@@ -9,22 +9,22 @@ fn main(
   // public contract inputs
   recipient: pub Field,
   fee: pub Field,
-  relayer: pub Field,
   // Merkle membership proof
   root: pub Field, 
   index: Field,
   merkle_path: [Field; N],
-) -> pub [Field; 3] {
-    constrain nullifier_hash == hash::pedersen([nullifier])[1];
+) -> pub [Field; 2]  {
+    // Validate the nullifier hash
+    constrain nullifier_hash == hash::mimc_bn254([nullifier]);
 
     // Compute input note commitment
-    let commitment = hash::pedersen([nullifier, secret])[1];
+    let commitment = hash::mimc_bn254([secret, nullifier]);
 
     // Check that the input note commitment is in the root
     constrain root == compute_merkle_root(commitment, index, merkle_path);
     
-    // Cannot have unused variables, return public contract inputs
-    [recipient, fee, relayer]
+    // Cannot have unused variables, return public contract inputs to constrain them with proof
+    [recipient, fee]
 }
 
 // Returns the root of the Merkle tree from the provided leaf and its Merkle path, using MiMC hash

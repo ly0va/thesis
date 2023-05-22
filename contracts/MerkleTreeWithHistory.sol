@@ -30,7 +30,7 @@ contract MerkleTreeWithHistory {
       filledSubtrees[i] = zeros(i);
     }
 
-    roots[0] = zeros(_levels - 1);
+    roots[0] = zeros(_levels);
   }
 
   /**
@@ -44,12 +44,12 @@ contract MerkleTreeWithHistory {
     require(uint256(_left) < FIELD_SIZE, "_left should be inside the field");
     require(uint256(_right) < FIELD_SIZE, "_right should be inside the field");
 
-    uint256 hash_left = _hasher.MiMCpe7(uint256(_left), 0);
-    uint256 R = addmod(uint256(_left), hash_left, FIELD_SIZE);
+    uint256 hash = _hasher.MiMCpe7(uint256(_left), 0);
+    uint256 R = addmod(uint256(_left), hash, FIELD_SIZE);
 
-    uint256 hash_right = _hasher.MiMCpe7(uint256(_right), R);
-    uint256 C = addmod(R, uint256(_right), FIELD_SIZE);
-    R = addmod(C, hash_right, FIELD_SIZE);
+    hash = _hasher.MiMCpe7(uint256(_right), R);
+    R = addmod(R, uint256(_right), FIELD_SIZE);
+    R = addmod(R, hash, FIELD_SIZE);
     return bytes32(R);
   }
 
