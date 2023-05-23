@@ -42,3 +42,5 @@ fn compute_merkle_root(leaf: Field, index: Field, merkle_path: [Field]) -> Field
     };
     current
 }
+
+// vim: syntax=rust
