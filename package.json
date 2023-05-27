@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^3.3.0",
-    "circomlibjs": "^0.1.7"
+    "circomlibjs": "^0.1.7",
+    "got": "^11.0.0"
   }
 }

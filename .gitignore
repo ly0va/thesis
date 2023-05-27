@@ -15,3 +15,6 @@ typechain-types
 node_modules
 yarn.lock
 yarn-error.log
+
+# my script artifacts
+*.json
