@@ -18,6 +18,15 @@ const AAVE_ADDRESS = '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9';
 const url = 'https://api.etherscan.io/api';
 const API_KEY = process.env.ETHERSCAN_API_KEY;
 
+const FLASH_LOAN = new ethers.utils.Interface([`event FlashLoan(
+    address indexed target,
+    address indexed initiator,
+    address indexed asset,
+    uint256 amount,
+    uint256 premium,
+    uint16 referralCode
+)`]);
+
 async function fetchEventsFromBlocks(fromBlock: number, toBlock: number, address: string, topic?: string) {
     let events = [];
     let over = false;
@@ -61,15 +70,6 @@ async function fetchTornadoEvents() {
 }
 
 async function fetchAaveEvents() {
-    const flashLoan = new ethers.utils.Interface([`event FlashLoan(
-        address indexed target,
-        address indexed initiator,
-        address indexed asset,
-        uint256 amount,
-        uint256 premium,
-        uint16 referralCode
-    )`]);
-
     const lastBlock = 17350000;
     const yearAgo = lastBlock - 365 * 24 * 60 * 5;
 
@@ -80,7 +80,7 @@ async function fetchAaveEvents() {
             block,
             block + step - 1,
             AAVE_ADDRESS,
-            flashLoan.getEventTopic('FlashLoan')
+            FLASH_LOAN.getEventTopic('FlashLoan')
         );
         events.push(...chunk);
     }
@@ -89,6 +89,23 @@ async function fetchAaveEvents() {
 }
 
 async function main() {
+    const flashloans = JSON.parse(fs.readFileSync(`flashloans.json`).toString());
+    const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
+    const yearlyPremium = flashloans
+        .map((e: any) => FLASH_LOAN.parseLog(e))
+        .filter((e: any) => e.args.asset == WETH)
+        .map((e: any) => e.args.premium)
+        .reduce(
+            (acc: any, current: any) => acc.add(current), 
+            ethers.BigNumber.from(0)
+        );
+    
+    console.log(
+        'Yearly flash loans premium:', 
+        yearlyPremium.div(ethers.BigNumber.from(10).pow(18)).toString(),
+        'ETH'
+    );
+
     const deposit = ethers.utils.id("Deposit(bytes32,uint32,uint256)");
     const withdrawal = ethers.utils.id("Withdrawal(address,bytes32,address,uint256)");
     for (const key of Object.keys(TORNADO_CASH)) {
