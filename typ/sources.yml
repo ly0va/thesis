@@ -1,31 +1,64 @@
 tornado:
   type: Article
   title: Tornado Cash Privacy Solution v1.4
-  author: [Alexey Pertsev, Roman Semenov, Roman Storm]
+  author: [A. Pertsev, R. Semenov, R. Storm]
   date: 2019-12-17
   url: https://berkeley-defi.github.io/assets/material/Tornado%20Cash%20Whitepaper.pdf
 
-primer:
-  type: Blog
-  title: "Zero Knowledge Proofs: An illustrated primer, Part 2"
-  author: Matthew Green
-  date: 2017-01-21
-  url: https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/
+# primer:
+#   type: Blog
+#   title: "Zero Knowledge Proofs: An illustrated primer, Part 2"
+#   author: Matthew Green
+#   date: 2017-01-21
+#   url: https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/
 
-zcash:
-  type: Blog
-  title: What are zk-SNARKs?
-  author: ZCash team
-  url: https://z.cash/technology/zksnarks/
+# zcash:
+#   type: Blog
+#   title: What are zk-SNARKs?
+#   author: ZCash team
+#   url: https://z.cash/technology/zksnarks/
 
 schnorr:
   type: Article
-  title: Schnorr's identification protocol
-  author: Trail of Bits
-  url: https://www.zkdocs.com/docs/zkdocs/zero-knowledge-protocols/schnorr/
+  title: Efficient Signature Generation by Smart Cards 
+  author: C. P. Schnorr
+  organization: Universität Frankfurt
+  date: 1991
+  url: https://link.springer.com/content/pdf/10.1007/BF00196725.pdf
+  parent:
+    type: Journal
+    title: Journal of Cryptology
+    issue: 4
+    page-range: 161-174
+    publisher: International Association for Cryptologic Research
 
 fiat-shamir:
   type: Article
-  title: Fiat-Shamir transformation
-  author: Trail of Bits
-  url: https://www.zkdocs.com/docs/zkdocs/protocol-primitives/fiat-shamir/
+  author: [A. Fiat, A. Shamir]
+  organization: The Weizmann Institute of Science
+  date: 1986
+  title: "How To Prove Yourself: Practical Solutions to Identification and Signature Problems"
+  url: https://link.springer.com/content/pdf/10.1007/3-540-47721-7_12.pdf
+  parent: 
+    type: Conference
+    title: Advances in Cryptology -- CRYPTO '86
+    page-range: 186-194
+
+mimc:
+  type: Article
+  author: [M. Albrecht, L. Grassi, C. Rechberger, A. Roy, T. Tiessen]
+  date: 2016
+  url: https://eprint.iacr.org/2016/492
+  publisher: Cryptology ePrint Archive
+
+# schnorr:
+#   type: Article
+#   title: Schnorr's identification protocol
+#   author: Trail of Bits
+#   url: https://www.zkdocs.com/docs/zkdocs/zero-knowledge-protocols/schnorr/
+
+# fiat-shamir:
+#   type: Article
+#   title: Fiat-Shamir transformation
+#   author: Trail of Bits
+#   url: https://www.zkdocs.com/docs/zkdocs/protocol-primitives/fiat-shamir/
