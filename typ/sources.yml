@@ -108,3 +108,16 @@ aave:
   title: AAVE protocol whitepaper v2.0
   date: 2020
   author: [E. Boado, S. Kulechov]
+
+aztec:
+  type: Article
+  url: https://github.com/AztecProtocol/aztec-v1/blob/master/AZTEC.pdf
+  title: The AZTEC Protocol
+  author: Z. J. Williamson
+  date: 2018
+
+this:
+  url: https://github.com/ly0va/thesis
+  title: Реалізація протоколу анонімних переказів на основі доказів з нульовим розголошенням
+  author: Л. Потьомкін
+  date: 2023

@@ -96,12 +96,12 @@ async function main() {
         .filter((e: any) => e.args.asset == WETH)
         .map((e: any) => e.args.premium)
         .reduce(
-            (acc: any, current: any) => acc.add(current), 
+            (acc: any, current: any) => acc.add(current),
             ethers.BigNumber.from(0)
         );
-    
+
     console.log(
-        'Yearly flash loans premium:', 
+        'Yearly flash loans premium:',
         yearlyPremium.div(ethers.BigNumber.from(10).pow(18)).toString(),
         'ETH'
     );
