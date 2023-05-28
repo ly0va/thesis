@@ -5,22 +5,9 @@ tornado:
   date: 2019-12-17
   url: https://berkeley-defi.github.io/assets/material/Tornado%20Cash%20Whitepaper.pdf
 
-# primer:
-#   type: Blog
-#   title: "Zero Knowledge Proofs: An illustrated primer, Part 2"
-#   author: Matthew Green
-#   date: 2017-01-21
-#   url: https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/
-
-# zcash:
-#   type: Blog
-#   title: What are zk-SNARKs?
-#   author: ZCash team
-#   url: https://z.cash/technology/zksnarks/
-
 schnorr:
   type: Article
-  title: Efficient Signature Generation by Smart Cards 
+  title: Efficient Signature Generation by Smart Cards
   author: C. P. Schnorr
   organization: Universität Frankfurt
   date: 1991
@@ -39,7 +26,7 @@ fiat-shamir:
   date: 1986
   title: "How To Prove Yourself: Practical Solutions to Identification and Signature Problems"
   url: https://link.springer.com/content/pdf/10.1007/3-540-47721-7_12.pdf
-  parent: 
+  parent:
     type: Conference
     title: Advances in Cryptology -- CRYPTO '86
     page-range: 186-194
@@ -47,18 +34,77 @@ fiat-shamir:
 mimc:
   type: Article
   author: [M. Albrecht, L. Grassi, C. Rechberger, A. Roy, T. Tiessen]
+  title: "MiMC: Efficient Encryption and Cryptographic Hashing with Minimal Multiplicative Complexity"
   date: 2016
-  url: https://eprint.iacr.org/2016/492
+  url: https://eprint.iacr.org/2016/492.pdf
   publisher: Cryptology ePrint Archive
 
-# schnorr:
-#   type: Article
-#   title: Schnorr's identification protocol
-#   author: Trail of Bits
-#   url: https://www.zkdocs.com/docs/zkdocs/zero-knowledge-protocols/schnorr/
+snark:
+  type: Article
+  title: Succinct Non-Interactive Zero Knowledge for a von Neumann Architecture
+  author: [E. Ben-Sasson, A. Chiesa, E. Tromer, M. Virza]
+  date: 2019
+  url: https://eprint.iacr.org/2013/879.pdf
+  publisher: Cryptology ePrint Archive
 
-# fiat-shamir:
-#   type: Article
-#   title: Fiat-Shamir transformation
-#   author: Trail of Bits
-#   url: https://www.zkdocs.com/docs/zkdocs/protocol-primitives/fiat-shamir/
+stark:
+  type: Article
+  url: https://eprint.iacr.org/2018/046.pdf
+  publisher: Cryptology ePrint Archive
+  date: 2018
+  author: [E. Ben-Sasson, I. Bentov, Y. Horesh, М. Riabzev]
+  title: Scalable, transparent, and post-quantum secure computational integrity
+
+bulletproof:
+  type: Article
+  url: https://eprint.iacr.org/2017/1066.pdf
+  publisher: Cryptology ePrint Archive
+  date: 2017
+  author: [В. Bünz, J. Bootle, D. Boneh, A. Poelstra, P. Wuille, G. Maxwell]
+  title: "Bulletproofs: Short Proofs for Confidential Transactions and More"
+
+plonk:
+  type: article
+  url: https://eprint.iacr.org/2019/953.pdf
+  publisher: Cryptology ePrint Archive
+  date: 2022
+  organization: Aztec
+  author: [A. Gabizon, Z. J. Williamson, O. Ciobotaru]
+  title: "PlonK: Permutations over Lagrange-bases for Oecumenical Noninteractive arguments of Knowledge"
+
+zcash:
+  type: Article
+  url: https://zips.z.cash/protocol/protocol.pdf
+  date: 2022
+  author: [D. Hopwood, S. Bowe, T. Hornby, N. Wilcox]
+  title: Zcash Protocol Specification
+
+monero:
+  type: Article
+  url: https://eprint.iacr.org/2018/535.pdf
+  publisher: Cryptology ePrint Archive
+  date: 2018
+  author: [K. M. Alonso, J. H. Joancomarti]
+  title: "Monero: Privacy in the blockchain"
+
+mimblewimble:
+  type: Article
+  url: https://eprint.iacr.org/2020/1064.pdf
+  date: 2020
+  author: G. Yu
+  title: Mimblewimble Non-Interactive Transaction Scheme
+
+merkle:
+  url: https://eprint.iacr.org/2016/683.pdf
+  type: Article
+  date: 2016
+  title: Efficient Sparse Merkle Trees
+  author: [R. Dahlberg, T. Pulls, R. Peeters]
+  publisher: Cryptology ePrint Archive
+
+aave:
+  type: Article
+  url: https://github.com/aave/protocol-v2/blob/master/aave-v2-whitepaper.pdf
+  title: AAVE protocol whitepaper v2.0
+  date: 2020
+  author: [E. Boado, S. Kulechov]
