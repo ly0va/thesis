@@ -109,8 +109,7 @@
 #locate(loc => counter(page).final(loc).last()) сторінок,
 #locate(loc => counter(figure.where(kind: image)).final(loc).last()) ілюстрацій,
 #locate(loc => counter(figure.where(kind: table)).final(loc).last()) таблиць,
-// no good way to do it automatically :(
-15 використаних джерел.
+#yaml("./sources.yml").len() використаних джерел.
 
 Ключові слова: ДОКАЗИ З НУЛЬОВИМ РОЗГОЛОШЕННЯМ, АНОНІМНІ ПЕРЕКАЗИ,
 БЛОКЧЕЙН, КРИПТОГРАФІЯ, СМАРТ КОНТРАКТИ, ДЕРЕВО МЕРКЛА.

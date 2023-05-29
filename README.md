@@ -19,7 +19,7 @@ Generate and verify ZKP with Noir:
 
 ```
 cd circuits
-nargo proof main
+nargo prove main
 nargo verify main
 ```
 
