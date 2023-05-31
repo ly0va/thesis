@@ -4,6 +4,7 @@
 #set text(size: fontsize, font: "Noto Serif", lang: "ua")
 #show raw: set text(size: fontsize)
 #show math.equation: set text(size: 16pt) // for some reason it looks smaller
+
 #set page(
   paper: "a4",
   margin: (
@@ -42,13 +43,13 @@
   columns: (70%, 30%),
   [
     Виконав студент 4-го курсу \
-    Потьомкін Лев Євгенович
+    Лев ПОТЬОМКІН
   ],
   signature,
   [
     Науковий керівник: \
     Член-кореспондент НАН України, професор \
-    Анісімов Анатолій Васильович
+    Анатолій АНІСІМОВ
   ],
   [\ #signature],
 )
@@ -86,7 +87,7 @@
 
       #grid(
         columns: (50%, 50%),
-        align(horizon)[Завідувач кафедри \ В. М. Терещенко],
+        align(horizon)[Завідувач кафедри \ Василь ТЕРЕЩЕНКО],
         signature,
       )
     ]
@@ -103,12 +104,24 @@
 #show outline: set par(first-line-indent: 0mm)
 #show terms: set par(first-line-indent: 0mm)
 
+#show figure.where(kind: table): it => box[
+  #tab #it.supplement #it.counter.display(it.numbering) -- #it.caption
+  #v(1em, weak: true)
+  #align(center, it.body)
+]
+
+#show figure.where(kind: image): it => align(center)[
+  #it.body
+  #v(1em, weak: true)
+  #it.supplement #it.counter.display(it.numbering) -- #it.caption
+]
+
 #heading(outlined: false)[Реферат]
 
 Обсяг роботи:
 #locate(loc => counter(page).final(loc).last()) сторінок,
-#locate(loc => counter(figure.where(kind: image)).final(loc).last()) ілюстрацій,
-#locate(loc => counter(figure.where(kind: table)).final(loc).last()) таблиць,
+#locate(loc => counter(figure.where(kind: image)).final(loc).last()) ілюстрації,
+#locate(loc => counter(figure.where(kind: table)).final(loc).last()) таблиця,
 #yaml("./sources.yml").len() використаних джерел.
 
 Ключові слова: ДОКАЗИ З НУЛЬОВИМ РОЗГОЛОШЕННЯМ, АНОНІМНІ ПЕРЕКАЗИ,
