@@ -19,6 +19,7 @@ contract Tornado is MerkleTreeWithHistory, ReentrancyGuard {
 
   event Deposit(bytes32 indexed commitment, uint32 leafIndex, uint256 timestamp);
   event Withdrawal(address to, bytes32 nullifierHash, address indexed relayer, uint256 fee);
+  event FlashLoan(address indexed initiator, address indexed target, uint256 amount);
 
   /**
     @dev The constructor
@@ -95,5 +96,23 @@ contract Tornado is MerkleTreeWithHistory, ReentrancyGuard {
   /** @dev whether a note is already spent */
   function isSpent(bytes32 _nullifierHash) public view returns (bool) {
     return nullifierHashes[_nullifierHash];
+  }
+
+  /**
+   * @dev Executes a Flash Loan - borrow as much money as you want, but return it by the end of the tx.
+   * @param target the contract address to call
+   * @param amount the amount to borrow
+   * @param data the calldata to call the target contract with
+   */
+  function flashLoan(address target, uint256 amount, bytes calldata data) external nonReentrant {
+    uint256 balance = address(this).balance;
+
+    // execute the call
+    (bool success, ) = target.call{ value: amount }(data);
+    require(success, "target call failed");
+
+    // 1% premium
+    require(address(this).balance >= balance + amount / 100, "flash loan did not repay");
+    emit FlashLoan(msg.sender, target, amount);
   }
 }
